@@ -1,5 +1,6 @@
 import React from 'react';
 import './Container.css'
+import Card from '../Card/Card'
 
 const Container = ({ shoes }) => {
 	return (
@@ -7,11 +8,7 @@ const Container = ({ shoes }) => {
 			<ul className="row">
 				{ shoes.map((item, index) => {
 					return (
-						<li key={index} className="item">
-							<img src={"https://codingapple1.github.io/shop/shoes" + ( index + 1 ) + ".jpg"} alt="신발이미지" width="100%" />
-							<h4>{item.title}</h4>
-							<p>{item.content} &nbsp; {item.price} </p>
-						</li>
+						<Card key={index} shoe={item} />
 					)
 				})}
 			</ul>
