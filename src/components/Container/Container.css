@@ -1,9 +1,23 @@
 .row {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .item {
-	list-style: none;
-	width: 33.33%;
+    display: flex;
+    list-style: none;
+    width: calc(33% - 10px);
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.more_btn {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f3;
+    border: 1px solid #a3a3a3;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #555;
 }

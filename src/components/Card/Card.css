@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+}
+
+.shoes_title {
+    margin: 10px;
+    color: #333;
+}
+
+.shoes_info {
+    margin: 5px;
+    padding: 10px;
+    color: #333;
+}

@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Stock from "../Stock/Stock";
 
 let DetailStyled = styled.div`
     * {
         margin: 0;
         padding: 0;
+    }
+
+    .container {
+        margin-bottom: 30px;
     }
 
     .alert {
@@ -18,6 +23,7 @@ let DetailStyled = styled.div`
     .img_wrap {
         img {
             width: 100%;
+            max-width: 800px;
         }
     }
 
@@ -92,6 +98,14 @@ function Detail(props) {
                     <h4>{product.title}</h4>
                     <p>{product.content}</p>
                     <p>{product.price}원</p>
+
+                    <Stock
+                        stock={props.hasStock}
+                        onClick={() => {
+                            props.setHasStock([...props.hasStock][0] - 1);
+                        }}
+                    />
+
                     <div className="button_wrap">
                         <button type="button" className="btn btn_order">
                             주문하기
