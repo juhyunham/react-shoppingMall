@@ -4,3 +4,4 @@
 2. Axios - get / post
 3. loading
 4. CSS - CSS in JS / SASS
+5. redux

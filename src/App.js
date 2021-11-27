@@ -22,7 +22,7 @@ function App() {
             <Route exact path="/">
                 <Main />
                 <Container shoes={shoes} />
-                {isLoading && <div>로딩중입니다</div>}
+                {isLoading && <div className="loading"></div>}
                 <button
                     type="button"
                     className="more_btn"
