@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Stock from "../Stock/Stock";
+import { connect } from "react-redux";
 
 let DetailStyled = styled.div`
     * {
@@ -107,7 +108,21 @@ function Detail(props) {
                     />
 
                     <div className="button_wrap">
-                        <button type="button" className="btn btn_order">
+                        <button
+                            type="button"
+                            className="btn btn_order"
+                            onClick={() => {
+                                props.dispatch({
+                                    type: "itemAdd",
+                                    data: {
+                                        id: 2,
+                                        name: product.title,
+                                        quan: 1,
+                                    },
+                                });
+                                history.push("/cart");
+                            }}
+                        >
                             주문하기
                         </button>
                         <button
@@ -126,4 +141,10 @@ function Detail(props) {
     );
 }
 
-export default Detail;
+function functionStateProps(state) {
+    return {
+        state: state,
+    };
+}
+
+export default connect(functionStateProps)(Detail);

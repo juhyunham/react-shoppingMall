@@ -11,18 +11,22 @@ import { createStore } from "redux";
 let initialArr = [
     {
         id: 0,
-        name: "멋진신발",
+        name: "white and Black",
         quan: 2,
     },
     {
         id: 1,
-        name: "예쁜옷",
+        name: "Grey Yordan",
         quan: 5,
     },
 ];
 
 function reducer(state = initialArr, action) {
-    if (action.type === `plus`) {
+    if (action.type === "itemAdd") {
+        let copy = [...state];
+        copy.push(action.data);
+        return copy;
+    } else if (action.type === `plus`) {
         let copy = [...state];
         copy[action.data].quan++;
         return copy;

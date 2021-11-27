@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const CartStyled = styled.div`
@@ -21,9 +21,27 @@ const CartStyled = styled.div`
         border-bottom: 1px solid #ccc;
         word-break: break-all;
     }
+
+    button {
+        border: 1px solid #333;
+        font-size: 15px;
+        margin-left: 5px;
+        background-color: #fff;
+        box-sizing: border-box;
+        min-width: 25px;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
 `;
 
 function Cart(props) {
+    let state = useSelector((state) => state);
+    const dispatch = useDispatch();
+
     return (
         <CartStyled>
             <div>
@@ -37,7 +55,7 @@ function Cart(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.state.map((item, index) => {
+                        {state.map((item, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{item.id}</td>
@@ -47,7 +65,7 @@ function Cart(props) {
                                         <button
                                             type="button"
                                             onClick={() => {
-                                                props.dispatch({
+                                                dispatch({
                                                     type: "plus",
                                                     data: item.id,
                                                 });
@@ -58,7 +76,7 @@ function Cart(props) {
                                         <button
                                             type="button"
                                             onClick={() => {
-                                                props.dispatch({
+                                                dispatch({
                                                     type: "minus",
                                                     data: item.id,
                                                 });
@@ -77,12 +95,12 @@ function Cart(props) {
     );
 }
 
-function functionStateProps(state) {
-    return {
-        state: state,
-    };
-}
+// function functionStateProps(state) {
+//     return {
+//         state: state,
+//     };
+// }
 
-export default connect(functionStateProps)(Cart);
+// export default connect(functionStateProps)(Cart);
 
-// export default Cart;
+export default Cart;
