@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Container from "./components/Container/Container";
 import Detail from "./components/Detail/Detail";
+import Cart from "./Cart";
 import Data from "./data";
 import axios from "axios";
 
@@ -55,6 +56,10 @@ function App() {
                     hasStock={hasStock}
                     setHasStock={setHasStock}
                 />
+            </Route>
+
+            <Route path="/cart">
+                <Cart />
             </Route>
         </div>
     );
