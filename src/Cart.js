@@ -37,14 +37,39 @@ function Cart(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>{props.state[0].name}</td>
-                            <td>{props.state[0].quan}</td>
-                            <td>
-                                <button type="button">증가</button>
-                            </td>
-                        </tr>
+                        {props.state.map((item, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{item.id}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.quan}</td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                props.dispatch({
+                                                    type: "plus",
+                                                    data: item.id,
+                                                });
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                props.dispatch({
+                                                    type: "minus",
+                                                    data: item.id,
+                                                });
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
