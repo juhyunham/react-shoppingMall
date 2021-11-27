@@ -8,7 +8,7 @@ import Cart from "./Cart";
 import Data from "./data";
 import axios from "axios";
 
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function App() {
     let [shoes, setShoes] = useState(Data);
