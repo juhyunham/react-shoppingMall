@@ -11,21 +11,31 @@ import { createStore } from "redux";
 let initialArr = [
     {
         id: 0,
-        name: "white and Black",
+        name: "sale shoes",
         quan: 2,
     },
     {
         id: 1,
-        name: "Grey Yordan",
+        name: "good baby shoes",
         quan: 5,
     },
 ];
 
 function reducer(state = initialArr, action) {
     if (action.type === "itemAdd") {
-        let copy = [...state];
-        copy.push(action.data);
-        return copy;
+        const findProd = state.findIndex((item) => {
+            return item.id === action.data.id;
+        });
+
+        if (findProd > 0) {
+            let copy = [...state];
+            copy[action.data.id].quan++;
+            return copy;
+        } else {
+            let copy = [...state];
+            copy.push(action.data);
+            return copy;
+        }
     } else if (action.type === `plus`) {
         let copy = [...state];
         copy[action.data].quan++;
