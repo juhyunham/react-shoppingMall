@@ -1,14 +1,17 @@
 import "./App.css";
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Container from "./components/Container/Container";
-import Detail from "./components/Detail/Detail";
-import Cart from "./Cart";
 import Data from "./data";
 import axios from "axios";
 
+// import Detail from "./components/Detail/Detail";
+import Cart from "./Cart";
+
 import { Route } from "react-router-dom";
+
+let Detail = lazy(() => import("./components/Detail/Detail"));
 
 function App() {
     let [shoes, setShoes] = useState(Data);
@@ -51,11 +54,13 @@ function App() {
             </Route>
 
             <Route path="/detail/:id">
-                <Detail
-                    shoes={shoes}
-                    hasStock={hasStock}
-                    setHasStock={setHasStock}
-                />
+                <Suspense fallback={<div>로딩중이에요~</div>}>
+                    <Detail
+                        shoes={shoes}
+                        hasStock={hasStock}
+                        setHasStock={setHasStock}
+                    />
+                </Suspense>
             </Route>
 
             <Route path="/cart">

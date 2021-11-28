@@ -41,6 +41,7 @@ const CartStyled = styled.div`
 function Cart(props) {
     let state = useSelector((state) => state);
     const dispatch = useDispatch();
+    const style = { color: "white" };
 
     return (
         <CartStyled>

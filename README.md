@@ -5,3 +5,4 @@
 3. loading
 4. CSS - CSS in JS / SASS
 5. redux
+6. lazy loading
