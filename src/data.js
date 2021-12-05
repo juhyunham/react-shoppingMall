@@ -15,6 +15,6 @@ export default [
         id: 3,
         title: "Grey Yordan",
         content: "Born in States",
-        price: 1100000,
+        price: 11000000,
     },
 ];
