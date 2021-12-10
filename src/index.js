@@ -58,7 +58,7 @@ let store = createStore(reducer);
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/react-shoppingMall">
             <Provider store={store}>
                 <App />
             </Provider>
