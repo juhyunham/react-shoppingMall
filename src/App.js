@@ -23,7 +23,7 @@ function App() {
         <div className="App">
             <Navbar />
 
-            <Route exact path="/">
+            <Route exact path="/" basename="/"/>
                 <Main />
                 <Container shoes={shoes} />
                 {isLoading && <div className="loading"></div>}
