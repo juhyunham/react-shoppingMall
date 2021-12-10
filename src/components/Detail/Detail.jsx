@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Stock from "../Stock/Stock";
+import Watched from "../Watched/Watched";
 import { connect } from "react-redux";
 
 let DetailStyled = styled.div`
@@ -75,6 +76,22 @@ function Detail(props) {
         };
     }, [showAlert]);
 
+    useEffect(() => {
+        let arr = localStorage.getItem("watched");
+
+        if (arr === null) {
+            arr = [];
+        } else {
+            arr = JSON.parse(arr);
+        }
+
+        arr.push(id);
+        arr = new Set(arr);
+        arr = [...arr];
+
+        localStorage.setItem("watched", JSON.stringify(arr));
+    }, [id]);
+
     let product = props.shoes.find(function (prod) {
         return prod.id === Number(id);
     });
@@ -137,6 +154,7 @@ function Detail(props) {
                     </div>
                 </div>
             </div>
+            <Watched id={id} shoes={props.shoes} />
         </DetailStyled>
     );
 }
