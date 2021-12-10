@@ -18,7 +18,7 @@ const Card = ({ shoe }) => {
                 />
                 <h4 className="shoes_title">{shoe.title}</h4>
                 <p className="shoes_info">
-                    {shoe.content} &nbsp; {shoe.price}{" "}
+                    {shoe.content} &nbsp; {shoe.price}
                 </p>
             </Link>
         </li>
